@@ -6,14 +6,7 @@ using namespace std;
 
 string **punteromatriz; int nfilas, ncolumnas;
 
-void crearmatriz(){
-    cout << "num. filas: "; cin >> nfilas; cout << "num. columnas: " ; cin >> ncolumnas;
-    nfilas *= 2; nfilas++; ncolumnas *= 2; ncolumnas++;
-    punteromatriz = new string*[nfilas]; //reservando memoria para filas
-    for(int i = 0; i < nfilas; i++){
-        punteromatriz[i] = new string[ncolumnas]; //reservando memoria para columnas
-    }
-}
+
 void anadirmatriz(int nfilas, int ncolumnas) {
     for (int i = 0; i < nfilas; i++) {
         for (int j = 0; j < ncolumnas; j++) {
