@@ -1,8 +1,11 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+
 using namespace std;
+
 string **punteromatriz; int nfilas, ncolumnas;
+
 void crearmatriz(){
     cout << "num. filas: "; cin >> nfilas; cout << "num. columnas: " ; cin >> ncolumnas;
     nfilas *= 2; nfilas++; ncolumnas *= 2; ncolumnas++;
@@ -23,7 +26,9 @@ void anadirmatriz(int nfilas, int ncolumnas) {
         }
     }
 }
+
 void mostrarmatriz(string** matriz, int nfilas, int ncolumnas){
+
     cout << "Imprimiendo matriz \n";
     for (int i = 0; i < nfilas; i++){
         for (int j = 0; j < ncolumnas; j++){
@@ -32,6 +37,7 @@ void mostrarmatriz(string** matriz, int nfilas, int ncolumnas){
         cout << "\n";
     }
 }
+
 //Para liberar la memoria
 void eliminarmatriz(string** punteromatriz, int nfilas, int ncolumnas){
     for(int i = 0; i < nfilas; i++){
@@ -39,7 +45,8 @@ void eliminarmatriz(string** punteromatriz, int nfilas, int ncolumnas){
     }
     delete [] punteromatriz;
 }
-void pr1(){
+
+int main(){
     crearmatriz();
     anadirmatriz(nfilas, ncolumnas);
     mostrarmatriz(punteromatriz, nfilas, ncolumnas);
