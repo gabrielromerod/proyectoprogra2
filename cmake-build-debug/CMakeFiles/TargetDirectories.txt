@@ -1,3 +1,0 @@
-C:/Users/USER/CLionProjects/PROYECTO/proyectoprogra2/cmake-build-debug/CMakeFiles/PROYECTO.dir
-C:/Users/USER/CLionProjects/PROYECTO/proyectoprogra2/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/USER/CLionProjects/PROYECTO/proyectoprogra2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
