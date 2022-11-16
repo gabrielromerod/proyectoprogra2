@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -109,6 +111,15 @@ class jugador{
             }
             return matriz;
         }
+        // Get para obtener el nombre del jugador
+        string get_username(){
+            return username;
+        }
+
+        // Get para obtener la pieza del jugador
+        string get_pieza(){
+            return pieza;
+        }
 };
 
 
@@ -125,25 +136,72 @@ void bienvenida(){
     cin.get();
 };
 
+int inicializar_tablero(){
+    // Selecionamos el tamaño del tablero
+    cout << "Seleccione el tamaño del tablero: " << endl;
+    cout << "1. 3x3" << endl; // int sz = 7
+    cout << "2. 4x4" << endl; // int sz = 9
+    cout << "3. 5x5" << endl; // int sz = 11
+
+    int sz, opcion;
+    cin >> opcion;
+    switch (opcion) {
+        case 1:
+            sz = 7;
+            break;
+        case 2:
+            sz = 9;
+            break;
+        case 3:
+            sz = 11;
+            break;
+        default:
+            sz = 7;
+            break;
+    }
+
+    return sz;
+};
+
+// Funcion inicializar jugadores con sus nombres y piezas y los almacena en un vector
+vector<jugador> inicializar_jugadores(){
+    vector<jugador> jugadores;
+    string username, pieza;
+    int n;
+    cout << "Ingrese el numero de jugadores: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cout << "Ingrese el nombre del jugador " << i + 1 << ": ";
+        cin >> username;
+        cout << "Ingrese la pieza del jugador " << i + 1 << ": ";
+        cin >> pieza;
+        jugador jugador(username, pieza);
+        jugadores.push_back(jugador);
+    }
+    return jugadores;
+};
+
 int main(){
 
+    // Bienvenida
     bienvenida();
+
+    // Limpiamos la pantalla
+    system("clear");
+
     // Creamos un objeto tablero
-    tablero tablero(9);
-    // Rellenamos la matriz
-    tablero.relleno_matriz(tablero.matriz,tablero.sz);
-    // Imprimimos la matriz
-    tablero.imprimir_matriz(tablero.matriz,tablero.sz);
+    tablero tablero(inicializar_tablero());
 
-    // Creamos un objeto jugador
-    jugador jugador1("Jugador 1","X");
-    jugador jugador2("Jugador 2","O");
+    // Rellenamos la matriz del tablero
+    tablero.matriz = tablero.relleno_matriz(tablero.matriz,tablero.sz);
 
-    // Modificamos la matriz del tablero
-    tablero.matriz = jugador1.modificar_matriz(&tablero,1,1,1,2,"X");
-    tablero.matriz = jugador2.modificar_matriz(&tablero,1,2,2,2,"O");
+    // Creamos un vector de jugadores
+    vector<jugador> jugadores = inicializar_jugadores();
 
-    cout << endl;
+    // Inicializamos a los jugadores
+
+    // Limpiamos la pantalla
+    system("clear");
 
     // Imprimimos la matriz
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
