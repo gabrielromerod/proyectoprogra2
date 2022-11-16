@@ -34,7 +34,7 @@ class tablero {
                     if(i==0 or i%2==0){
                         matriz[i][j]="*";
                         if(j%2!=0){
-                            matriz[i][j]="-";x++;
+                            matriz[i][j]="─";x++;
                         }
                     }
                     else{
@@ -46,13 +46,29 @@ class tablero {
             }
             return matriz;
         }
-        // Funcion para imprimir la matriz
+        // Funcion para imprimir la matriz en pantalla con las coordenadas de la matriz en la esquina superior izquierda de la matriz saltanto una linea
         void imprimir_matriz(string** matriz,int sz){
+            int x=0;
+            cout << " ";
+            for(int i=0;i<sz;i = i + 2){
+                cout <<" "<<x+1 << "";
+                x++;
+            }
+            x=0;
+            cout << endl;
             for(int i=0;i<sz;i++){
                 for(int j=0;j<sz;j++){
-                    cout<<matriz[i][j];
+                    if(j==0){
+                        if (i==0 or i%2==0){
+                            cout <<x+1;
+                            x++;
+                        }
+                        else{cout << " ";}
+                        cout << " ";
+                    }
+                    cout <<matriz[i][j];
                 }
-                cout<<endl;
+                cout << endl;
             }
         }
 };
@@ -95,6 +111,7 @@ class jugador{
         }
 };
 
+
 void bienvenida(){
     cout<<"Bienvenido a dots and boxes"<<endl;
     cout<<"El juego consiste en unir puntos para formar cuadrados"<<endl;
@@ -108,37 +125,27 @@ void bienvenida(){
     cin.get();
 };
 
-void registro_usuarios(){
-    string username;
-    string pieza;
-    cout<<"Ingrese su nombre de usuario: ";cin>>username;
-    cout<<"Ingrese su pieza: ";cin>>pieza;
-    jugador *jugador1 = new jugador(username,pieza);
-    cout<<"Ingrese su nombre de usuario: ";cin>>username;
-    cout<<"Ingrese su pieza: ";cin>>pieza;
-    jugador *jugador2 = new jugador(username,pieza);
-};
-
 int main(){
 
     bienvenida();
     // Creamos un objeto tablero
-    tablero tablero(11);
+    tablero tablero(9);
     // Rellenamos la matriz
     tablero.relleno_matriz(tablero.matriz,tablero.sz);
     // Imprimimos la matriz
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
 
-    // Limpiamos la pantalla
-    system("clear");
+    // Creamos un objeto jugador
+    jugador jugador1("Jugador 1","X");
+    jugador jugador2("Jugador 2","O");
 
-    registro_usuarios();
+    // Modificamos la matriz del tablero
+    tablero.matriz = jugador1.modificar_matriz(&tablero,1,1,1,2,"X");
+    tablero.matriz = jugador2.modificar_matriz(&tablero,1,2,2,2,"O");
 
-    // Limpiamos la pantalla
-    system("clear");
+    cout << endl;
 
     // Imprimimos la matriz
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
 
-    return 0;
 };
