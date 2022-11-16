@@ -95,7 +95,33 @@ class jugador{
         }
 };
 
+void bienvenida(){
+    cout<<"Bienvenido a dots and boxes"<<endl;
+    cout<<"El juego consiste en unir puntos para formar cuadrados"<<endl;
+    cout<<"El jugador que forme mas cuadrados gana"<<endl;
+    cout<<"Para unir puntos se debe ingresar la coordenada de los puntos a unir"<<endl;
+    cout<<"Ejemplo: 1 1 1 2"<<endl;
+    cout<<"El primer par de numeros es la coordenada del punto de inicio"<<endl;
+    cout<<"El segundo par de numeros es la coordenada del punto de fin"<<endl;
+    cout<<"El juego termina cuando ya no se puedan unir mas puntos"<<endl;
+    cout<<"Presione enter para continuar"<<endl;
+    cin.get();
+};
+
+void registro_usuarios(){
+    string username;
+    string pieza;
+    cout<<"Ingrese su nombre de usuario: ";cin>>username;
+    cout<<"Ingrese su pieza: ";cin>>pieza;
+    jugador *jugador1 = new jugador(username,pieza);
+    cout<<"Ingrese su nombre de usuario: ";cin>>username;
+    cout<<"Ingrese su pieza: ";cin>>pieza;
+    jugador *jugador2 = new jugador(username,pieza);
+};
+
 int main(){
+
+    bienvenida();
     // Creamos un objeto tablero
     tablero tablero(11);
     // Rellenamos la matriz
@@ -103,24 +129,16 @@ int main(){
     // Imprimimos la matriz
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
 
-    cout << endl;
+    // Limpiamos la pantalla
+    system("clear");
 
-    // Creamos dos objetos jugador
-    jugador jugador1("Jugador 1","X");
-    jugador jugador2("Jugador 2","O");
+    registro_usuarios();
 
-    // Modificamos la matriz del tablero
-    tablero.matriz = jugador1.modificar_matriz(&tablero,1,1,1,3,"X");
+    // Limpiamos la pantalla
+    system("clear");
+
     // Imprimimos la matriz
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
-
-    cout << endl;
-
-    // Modificamos la matriz del tablero
-    tablero.matriz = jugador2.modificar_matriz(&tablero,1,3,3,3,"O");
-    // Imprimimos la matriz
-    tablero.imprimir_matriz(tablero.matriz,tablero.sz);
-
 
     return 0;
 };
