@@ -163,22 +163,37 @@ int inicializar_tablero(){
     return sz;
 };
 
-// Funcion inicializar jugadores con sus nombres y piezas y los almacena en un vector
-vector<jugador> inicializar_jugadores(){
-    vector<jugador> jugadores;
-    string username, pieza;
-    int n;
-    cout << "Ingrese el numero de jugadores: ";
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cout << "Ingrese el nombre del jugador " << i + 1 << ": ";
-        cin >> username;
-        cout << "Ingrese la pieza del jugador " << i + 1 << ": ";
-        cin >> pieza;
-        jugador jugador(username, pieza);
-        jugadores.push_back(jugador);
+// Funcion movimiento de jugador
+void movimiento_jugador(jugador *jugador,tablero *tablero){
+    int x0,y0,x,y;
+    cout << "Ingrese las coordenadas del punto de inicio: " << endl;
+    cin >> x0 >> y0;
+    cout << "Ingrese las coordenadas del punto de fin: " << endl;
+    cin >> x >> y;
+    string **matriz = tablero->matriz;
+    string w = jugador->get_pieza();
+    matriz = jugador->modificar_matriz(tablero,x0,y0,x,y,w);
+    tablero->imprimir_matriz(matriz,tablero->sz);
+};
+
+// Funcion para verificar si el algun jugador gano un cuadrado
+bool verificar_cuadrado(jugador *jugador,tablero *tablero){
+    string **matriz = tablero->matriz;
+    string w = jugador->get_pieza();
+    int sz = tablero->sz;
+    int x=0;
+    for(int i=0;i<sz;i++){
+        for(int j=0;j<sz;j++){
+            if(matriz[i][j]==w){
+                if(i%2==0 and j%2==0){
+                    if(matriz[i-1][j-1]==w and matriz[i-1][j+1]==w and matriz[i+1][j-1]==w and matriz[i+1][j+1]==w){
+                        return true;
+                    }
+                }
+            }
+        }
     }
-    return jugadores;
+    return false;
 };
 
 int main(){
@@ -196,14 +211,23 @@ int main(){
     tablero.matriz = tablero.relleno_matriz(tablero.matriz,tablero.sz);
 
     // Creamos un vector de jugadores
-    vector<jugador> jugadores = inicializar_jugadores();
+    vector<jugador> jugadores;
+    
+    // Inicializamos los jugadores
+    jugadores.push_back(jugador("Jugador 1","X"));
+    jugadores.push_back(jugador("Jugador 2","O"));
 
-    // Inicializamos a los jugadores
-
-    // Limpiamos la pantalla
-    system("clear");
-
-    // Imprimimos la matriz
-    tablero.imprimir_matriz(tablero.matriz,tablero.sz);
-
+    // Movimiento de los jugadores
+    int turno = 0;
+    while(true){
+        system("clear");
+        cout << "Turno de: " << jugadores[turno].get_username() << endl;
+        tablero.imprimir_matriz(tablero.matriz,tablero.sz);
+        movimiento_jugador(&jugadores[turno],&tablero);
+        if(verificar_cuadrado(&jugadores[turno],&tablero)){
+            cout << "Ganaste un cuadrado" << endl;
+            cin.get();
+        }
+        turno = (turno + 1) % 2;
+    }
 };
