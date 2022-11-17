@@ -4,7 +4,6 @@
 
 using namespace std;
 
-
 // Creamos una clase tablero tablero que pueda ser modificada por la clase jugador
 class tablero {
     public:
@@ -79,6 +78,7 @@ class tablero {
 class jugador{
     string username;
     string pieza;
+    int puntaje = 0;
     public:
         jugador(string username,string pieza){
             this->username=username;
@@ -101,6 +101,7 @@ class jugador{
                     }
                     else if(y0==y){
                         if(x0>x){
+
                             matriz[x0-1][y]=w;
                         }
                         else{
@@ -111,6 +112,43 @@ class jugador{
             }
             return matriz;
         }
+
+        // Validar si el movimiento es valido usando un booleano
+        bool validar_movimiento(tablero *tablero,int x0,int y0,int x,int y){
+            int sz = tablero->sz;
+            string **matriz = tablero->matriz;
+            x0 = x0 * 2 - 2;y0 = y0 * 2 - 2;x = x * 2 - 2;y = y * 2 - 2;
+            for (int i = 0; i < sz; i++) {
+                for (int j = 0; j < sz; j++) {
+                    if(x0 == x){
+                        if(y>y0){
+                            if (matriz[x0][y-1] == "$" or matriz[x0][y-1] == "X"){
+                                return false;
+                            }
+                        }
+                        else {
+                            if (matriz[x0][y0-1] == "$" or matriz[x0][y0-1] == "X"){
+                                return false;
+                            }
+                        }
+                    }
+                    else if(y0==y){
+                        if(x0>x){
+                            if (matriz[x0-1][y] == "$" or matriz[x0-1][y] == "X"){
+                                return false;
+                            }
+                        }
+                        else{
+                            if (matriz[x-1][y] == "$" or matriz[x-1][y] == "X"){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
         // Get para obtener el nombre del jugador
         string get_username(){
             return username;
@@ -119,6 +157,16 @@ class jugador{
         // Get para obtener la pieza del jugador
         string get_pieza(){
             return pieza;
+        }
+
+        // Get para obtener el puntaje del jugador
+        int get_puntaje(){
+            return puntaje;
+        }
+
+        // Suma 1 al puntaje del jugador
+        void sumar_puntaje(){
+            puntaje++;
         }
 };
 
@@ -164,36 +212,55 @@ int inicializar_tablero(){
 };
 
 // Funcion movimiento de jugador
-void movimiento_jugador(jugador *jugador,tablero *tablero){
+void movimiento_jugador(jugador *jugador1,jugador *jugador2, tablero *tablero){
     int x0,y0,x,y;
     cout << "Ingrese las coordenadas del punto de inicio: " << endl;
     cin >> x0 >> y0;
     cout << "Ingrese las coordenadas del punto de fin: " << endl;
     cin >> x >> y;
     string **matriz = tablero->matriz;
-    string w = jugador->get_pieza();
-    matriz = jugador->modificar_matriz(tablero,x0,y0,x,y,w);
-    tablero->imprimir_matriz(matriz,tablero->sz);
+    string w = jugador1->get_pieza();
+    string w2 = jugador2->get_pieza();
+    // Verificamos que las coordenadas ingresadas no esten fuera del tablero, para eso verificamos que sean mayores a 0 y menores al tamaño del tablero
+    if (x0 > 0 and x0 <= tablero->sz+1 and y0 > 0 and y0 <= tablero->sz+1 and x > 0 and x <= tablero->sz+1 and y > 0 and y <= tablero->sz+1){
+        cout << "Coordenadas fuera del tablero" << endl;
+        movimiento_jugador(jugador1,jugador2,tablero);
+    } else {
+        if (jugador1-> validar_movimiento(tablero,x0,y0,x,y)){
+            matriz = jugador1->modificar_matriz(tablero,x0,y0,x,y, w);
+            tablero->matriz = matriz;
+        } else {
+            cout << "Movimiento invalido" << endl;
+            movimiento_jugador(jugador1,jugador2,tablero);
+        }
+    }
 };
 
-// Funcion para verificar si el algun jugador gano un cuadrado
-bool verificar_cuadrado(jugador *jugador,tablero *tablero){
-    string **matriz = tablero->matriz;
-    string w = jugador->get_pieza();
+// Funcion para verificar si el algun jugador gano un cuadrado en caso de que si se suma 1 al puntaje del jugador
+void verificar_cuadrado(jugador *jugador1,jugador *jugador2, tablero *tablero){
     int sz = tablero->sz;
-    int x=0;
-    for(int i=0;i<sz;i++){
-        for(int j=0;j<sz;j++){
-            if(matriz[i][j]==w){
-                if(i%2==0 and j%2==0){
-                    if(matriz[i-1][j-1]==w and matriz[i-1][j+1]==w and matriz[i+1][j-1]==w and matriz[i+1][j+1]==w){
-                        return true;
-                    }
-                }
+    string **matriz = tablero->matriz;
+    string w = jugador1->get_pieza();
+    string w2 = jugador2->get_pieza();
+    for (int i = 0; i < sz; i++) {
+        for (int j = 0; j < sz; j++) {
+            if (matriz[i][j] == w and matriz[i+1][j] == w and matriz[i][j+1] == w and matriz[i+1][j+1] == w){
+                jugador1->sumar_puntaje();
+                matriz[i][j] = "X";
+                matriz[i+1][j] = "X";
+                matriz[i][j+1] = "X";
+                matriz[i+1][j+1] = "X";
+            }
+            else if (matriz[i][j] == w2 and matriz[i+1][j] == w2 and matriz[i][j+1] == w2 and matriz[i+1][j+1] == w2){
+                jugador2->sumar_puntaje();
+                matriz[i][j] = "X";
+                matriz[i+1][j] = "X";
+                matriz[i][j+1] = "X";
+                matriz[i+1][j+1] = "X";
             }
         }
     }
-    return false;
+    tablero->matriz = matriz;
 };
 
 int main(){
@@ -215,19 +282,17 @@ int main(){
     
     // Inicializamos los jugadores
     jugadores.push_back(jugador("Jugador 1","X"));
-    jugadores.push_back(jugador("Jugador 2","O"));
+    jugadores.push_back(jugador("Jugador 2","$"));
 
     // Movimiento de los jugadores
     int turno = 0;
     while(true){
         system("clear");
         cout << "Turno de: " << jugadores[turno].get_username() << endl;
+        cout << "Puntaje de " << jugadores[turno].get_username() << ": " << jugadores[turno].get_puntaje() << endl;
         tablero.imprimir_matriz(tablero.matriz,tablero.sz);
-        movimiento_jugador(&jugadores[turno],&tablero);
-        if(verificar_cuadrado(&jugadores[turno],&tablero)){
-            cout << "Ganaste un cuadrado" << endl;
-            cin.get();
-        }
+        movimiento_jugador(&jugadores[turno],&jugadores[turno==0?1:0],&tablero);
+        verificar_cuadrado(&jugadores[turno],&jugadores[turno==0?1:0],&tablero);
         turno = (turno + 1) % 2;
     }
 };
