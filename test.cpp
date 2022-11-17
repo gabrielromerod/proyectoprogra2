@@ -221,8 +221,8 @@ void movimiento_jugador(jugador *jugador1,jugador *jugador2, tablero *tablero){
     string **matriz = tablero->matriz;
     string w = jugador1->get_pieza();
     string w2 = jugador2->get_pieza();
-    // Verificamos que las coordenadas ingresadas no esten fuera del tablero, para eso verificamos que sean mayores a 0 y menores al tamaño del tablero
-    if (x0 > 0 and x0 <= tablero->sz+1 and y0 > 0 and y0 <= tablero->sz+1 and x > 0 and x <= tablero->sz+1 and y > 0 and y <= tablero->sz+1){
+    // Verificamos que las coordenadas ingresadas no esten fuera del tablero
+    if (x0 > tablero->sz/2 or x0 < 1 or y0 > tablero->sz/2 or y0 < 1 or x > tablero->sz/2 or x < 1 or y > tablero->sz/2 or y < 1){
         cout << "Coordenadas fuera del tablero" << endl;
         movimiento_jugador(jugador1,jugador2,tablero);
     } else {
