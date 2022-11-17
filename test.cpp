@@ -226,12 +226,13 @@ void movimiento_jugador(jugador *jugador1,jugador *jugador2, tablero *tablero){
         cout << "Coordenadas fuera del tablero" << endl;
         movimiento_jugador(jugador1,jugador2,tablero);
     } else {
-        if (jugador1-> validar_movimiento(tablero,x0,y0,x,y)){
-            matriz = jugador1->modificar_matriz(tablero,x0,y0,x,y, w);
-            tablero->matriz = matriz;
-        } else {
+        // Verifcamos que no sea un movimiento en diagonal
+        if (x0 == x or y0 == y){
             cout << "Movimiento invalido" << endl;
             movimiento_jugador(jugador1,jugador2,tablero);
+        } else {
+              matriz = jugador1->modificar_matriz(tablero,x0,y0,x,y, w);
+                tablero->matriz = matriz;
         }
     }
 };
