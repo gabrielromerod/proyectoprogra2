@@ -231,7 +231,7 @@ void movimiento_jugador(jugador *jugador1,jugador *jugador2, tablero *tablero, i
     string w = jugador1->get_pieza();
     string w2 = jugador2->get_pieza();
     // Verificamos que las coordenadas ingresadas no esten fuera del tablero
-        if (x0 == x && y0 == y){
+        if (!(x0==x || y0 == y)){
             cout << "Movimiento diagonal invalido" << endl;
             movimiento_jugador(jugador1,jugador2,tablero,sz);
         } else {
