@@ -304,9 +304,9 @@ int main(){
     
 
     // Mostramos el puntaje de los jugadores
-    cout << jugadores[0].get_username() << ": " << jugadores[0].get_puntaje();
-    cout << " - " << jugadores[1].get_username() << ": " << jugadores[1].get_puntaje() << endl;
+    cout << jugadores[0].get_username() << ": " << jugadores[0].get_puntaje() << " - " << jugadores[1].get_username() << ": " << jugadores[1].get_puntaje() << endl;
     tablero.imprimir_matriz(tablero.matriz,tablero.sz);
+
     // Mostramos el ganador
     if (jugadores[0].get_puntaje() > jugadores[1].get_puntaje()){
         cout << "El ganador es: " << jugadores[0].get_username() << endl;
@@ -315,4 +315,13 @@ int main(){
     } else {
         cout << "Empate" << endl;
     }
+
+    // Limpiamos la memoria
+    for (int i = 0; i < sz; i++){
+        delete[] tablero.matriz[i];
+    }
+    delete[] tablero.matriz;
+
+    // Fin del programa
+    return 0;
 };
