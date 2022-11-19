@@ -251,18 +251,14 @@ void verificar_cuadrado(jugador *jugador1,jugador *jugador2, tablero *tablero, i
     string **matriz = tablero->matriz;
     string w = jugador1->get_pieza();
     string w2 = jugador2->get_pieza();
-    // Se gana cuando el 0 esta rodeado por 4 fichas del mismo jugador
-    for (int i = 0; i < sz; i++) {
-        for (int j = 0; j < sz; j++) {
+    // El punto se gana si se forma un cuadrado con 4 lineas sin importar si las fichas son del mismo jugador o no
+    for (int i = 1; i < sz; i+=2){
+        for (int j = 1; j < sz; j+=2){
             if (matriz[i][j] == "0"){
-                if (matriz[i-1][j] == w && matriz[i+1][j] == w && matriz[i][j-1] == w && matriz[i][j+1] == w){
+                if ((matriz[i-1][j] == w || matriz[i-1][j] == w2) && (matriz[i+1][j] == w || matriz[i+1][j] == w2) && (matriz[i][j-1] == w || matriz[i][j-1] == w2) && (matriz[i][j+1] == w || matriz[i][j+1] == w2)){
                     jugador1->sumar_puntaje();
+                    cout << "El jugador " << jugador1->get_username() << " gano un cuadrado" << endl;
                     matriz[i][j] = w;
-                    tablero->matriz = matriz;
-                }
-                else if (matriz[i-1][j] == w2 && matriz[i+1][j] == w2 && matriz[i][j-1] == w2 && matriz[i][j+1] == w2){
-                    jugador2->sumar_puntaje();
-                    matriz[i][j] = w2;
                     tablero->matriz = matriz;
                 }
             }
