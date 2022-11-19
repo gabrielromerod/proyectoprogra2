@@ -295,8 +295,7 @@ int main(){
         system("clear");
         cout << "Turno de: " << jugadores[turno].get_username() << endl;
         // Mostramos el puntaje de los jugadores
-        cout << jugadores[0].get_username() << ": " << jugadores[0].get_puntaje();
-        cout << " - " << jugadores[1].get_username() << ": " << jugadores[1].get_puntaje() << endl;
+        cout << jugadores[0].get_username() << ": " << jugadores[0].get_puntaje() << " - " << jugadores[1].get_username() << ": " << jugadores[1].get_puntaje() << endl;
         tablero.imprimir_matriz(tablero.matriz,tablero.sz);
         movimiento_jugador(&jugadores[turno],&jugadores[turno==0?1:0],&tablero, sz);
         verificar_cuadrado(&jugadores[turno],&jugadores[turno==0?1:0],&tablero, sz - (sz-1)/2);
