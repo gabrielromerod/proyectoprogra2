@@ -291,7 +291,7 @@ int main(){
 
     // Movimiento de los jugadores
     int turno = 0;
-    while(true){
+    do{
         system("clear");
         cout << "Turno de: " << jugadores[turno].get_username() << endl;
         // Mostramos el puntaje de los jugadores
@@ -301,5 +301,19 @@ int main(){
         movimiento_jugador(&jugadores[turno],&jugadores[turno==0?1:0],&tablero, sz);
         verificar_cuadrado(&jugadores[turno],&jugadores[turno==0?1:0],&tablero, sz - (sz-1)/2);
         turno = (turno + 1) % 2;
+    } while (jugadores[0].get_puntaje() + jugadores[1].get_puntaje() != (sz - (sz-1)/2) * (sz - (sz-1)/2));
+    
+
+    // Mostramos el puntaje de los jugadores
+    cout << jugadores[0].get_username() << ": " << jugadores[0].get_puntaje();
+    cout << " - " << jugadores[1].get_username() << ": " << jugadores[1].get_puntaje() << endl;
+    tablero.imprimir_matriz(tablero.matriz,tablero.sz);
+    // Mostramos el ganador
+    if (jugadores[0].get_puntaje() > jugadores[1].get_puntaje()){
+        cout << "El ganador es: " << jugadores[0].get_username() << endl;
+    } else if (jugadores[0].get_puntaje() < jugadores[1].get_puntaje()){
+        cout << "El ganador es: " << jugadores[1].get_username() << endl;
+    } else {
+        cout << "Empate" << endl;
     }
 };
