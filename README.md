@@ -3,6 +3,7 @@ Este es el Proyecto Grupal de la materia Programación 2 de Universidad de Ingen
 El docente de la materia es el Ing. Ruben Rivas.
 
 ## Nombre del Proyecto: Got GHNTS
+Got GHNTS (Gots Got Noughts) es un juego de lógica y estrategia para dos jugadores. Su nombre proviene de los términos ingleses "Got" (tener) y "Noughts" (ceros). Estos dos términos hacen mención a los binarios que representa la dualidad de los dos jugadores. El logo del juego se basa en el juego de "Dots and Boxes", en el que se trata de conectar puntos dentro de una cuadricula para crear una caja. Esta imagen se utiliza para representar el juego de GHNTS, ya que los jugadores tienen que conectar cuatro puntos para ganar el juego.
 
 <img src="https://i.imgur.com/FN3c2t6.png" width="250">
 
@@ -45,6 +46,9 @@ La piratería de software es ilegal y los juegos no son una excepción. El juego
 El proyecto se encuentra bajo la licencia MIT License. Para más información, ver el archivo [LICENSE](./LICENSE) en el repositorio.
 
 ## Diagrama de clases
+Como parte del proyecto, se ha creado un [diagrama de clases](./src/img/diagrama.jpeg) para facilitar la comprensión del código. 
+
+![Diagrama de clases](https://i.imgur.com/ZzzYBhl.jpeg)
 
 ## Link del video de presentación
 - [Vídeo de presentación]("LINK DEL VIDEO")
