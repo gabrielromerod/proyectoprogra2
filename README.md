@@ -28,7 +28,7 @@ El juego ha sido desarrollado en C++ y se ha probado en los siguientes sistemas 
 El juego es capaz de ejecutarse en cualquier sistema operativo que soporte C++. Sin embargo, hemos creado un archivo ejecutable para Windows 10, el cual se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego en Windows 10, solo es necesario descargar el archivo "got-ghnts.exe" y ejecutarlo.
 
 ## Guía de instalación
-Para instalar el juego, solo es necesario descargar el repositorio completo. El juego se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego, solo es necesario abrir la carpeta "bin" y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++.
+Para instalar el juego tenemos que abrir en la carpeta "bin" del repositorio. Para ejecutar el juego, solo es necesario abrir el archivo "mysetuo.exe".
 
 En caso de no poder usar un ejecutable, el juego se puede ejecutar en la consola de comandos de cualquier sistema operativo. Para ello, solo es necesario abrir la carpeta "src" del repositorio y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++. El juego se ejecutará en la consola de comandos.
 
