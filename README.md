@@ -51,7 +51,7 @@ Como parte del proyecto, se ha creado un [diagrama de clases](./src/img/diagrama
 ![Diagrama de clases](https://i.imgur.com/ZzzYBhl.jpeg)
 
 ## Link del video de presentación
-- [Vídeo de presentación](./src/video/Video%20Proyecto.mp4)
+- [Vídeo de presentación](https://www.youtube.com/watch?v=deoB88pbE7U)
 
 ## Autores
 | Integrantes  | Correos |
