@@ -1,4 +1,4 @@
-# Proyecto Grupal - Programación 2
+# [Proyecto Grupal - Programación 2](https://github.com/gabrielromerod/proyectoprogra2)
 Este es el Proyecto Grupal de la materia Programación 2 de Universidad de Ingeniería y Tecnología (UTEC) para el segundo semestre del 2022.
 El docente de la materia es el Ing. Ruben Rivas.
 
@@ -46,7 +46,7 @@ La piratería de software es ilegal y los juegos no son una excepción. El juego
 El proyecto se encuentra bajo la licencia MIT License. Para más información, ver el archivo [LICENSE](./LICENSE) en el repositorio.
 
 ## Diagrama de clases
-Como parte del proyecto, se ha creado un [diagrama de clases](./src/img/diagrama.jpeg) para facilitar la comprensión del código. 
+Como parte del proyecto, se ha creado un [diagrama de clases](https://github.com/gabrielromerod/proyectoprogra2/blob/main/src/img/diagrama.jpeg) para facilitar la comprensión del código. 
 
 ![Diagrama de clases](https://i.imgur.com/ZzzYBhl.jpeg)
 
