@@ -26,18 +26,30 @@ El juego ha sido desarrollado en C++ y se ha probado en los siguientes sistemas 
 
 El juego es capaz de ejecutarse en cualquier sistema operativo que soporte C++. Sin embargo, hemos creado un archivo ejecutable para Windows 10, el cual se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego en Windows 10, solo es necesario descargar el archivo "got-ghnts.exe" y ejecutarlo.
 
-## Instrucciones de instalación
+## Guía de instalación
 Para instalar el juego, solo es necesario descargar el repositorio completo. El juego se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego, solo es necesario abrir la carpeta "bin" y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++.
 
 En caso de no poder usar un ejecutable, el juego se puede ejecutar en la consola de comandos de cualquier sistema operativo. Para ello, solo es necesario abrir la carpeta "src" del repositorio y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++. El juego se ejecutará en la consola de comandos.
+
+## Guía de uso
+1. El juego comienza con la selección de dos jugadores.
+2. Los jugadores usan fichas para marcar los cuadrados.
+3. Cada jugador toma turnos para conectar dos puntos en una línea para crear un cuadrado.
+4. El jugador que llena el cuadrado con la línea gana el punto.
+5. El juego termina cuando todos los cuadrados están llenos.
+6. El jugador con más puntos al final del juego gana.
+
+La piratería de software es ilegal y los juegos no son una excepción. El juego Dots and Boxes no es diferente. El uso de cualquier contenido ilegal está prohibido y puede conllevar grandes consecuencias. Por favor, descargue el juego de forma legal para apoyar al desarrollador y asegurar que está disfrutando de la experiencia de juego completa.
 
 ## Licencia
 El proyecto se encuentra bajo la licencia MIT License. Para más información, ver el archivo [LICENSE](./LICENSE) en el repositorio.
 
 ## Diagrama de clases
 
+## Link del video de presentación
+- [Vídeo de presentación]("LINK DEL VIDEO")
 
-## Integrantes
+## Autores
 | Integrantes  | Correos |
 | ------------- | ------------- |
 | Gabriel Eduardo Romero Diez | gabriel.romero@utec.edu.pe |
@@ -47,17 +59,13 @@ El proyecto se encuentra bajo la licencia MIT License. Para más información, v
 | Jose Carlos De la Cruz Huaman | jose.delacruz@utec.edu.pe |
 | Salvador Justo Ruben Cordova Flores | salvador.cordova@utec.edu.pe |
 
-## Instrucciones de uso
-Para poder ejecutar el juego, se debe tener instalado el compilador de C++ en el sistema operativo. Una vez instalado el compilador, se debe abrir la consola de comandos y dirigirse a la carpeta donde se encuentra el archivo "main.cpp". Una vez en la carpeta, se debe ejecutar el siguiente comando:
-
-`g++ main.cpp -o main`
-
-Una vez compilado el programa, se debe ejecutar el siguiente comando:
-
-`./main`
-
 ## Mejoras futuras
 - Implementar un sistema de guardado y carga de partidas en archivos binarios.
 - Implementar un sistema de ranking en archivos binarios.
 - Implementar un sistema de estadísticas en archivos binarios.
 
+## Bibliografía
+- [Dots and Boxes](https://en.wikipedia.org/wiki/Dots_and_Boxes)
+- [Dots and Boxes](https://www.mathsisfun.com/games/dots-and-boxes.html)
+- [UML Class Diagram](https://www.uml-diagrams.org/class-diagrams-overview.html)
+- [Dots and Boxes Logic](https://www.youtube.com/watch?v=KboGyIilP6k)
