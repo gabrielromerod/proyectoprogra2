@@ -11,6 +11,32 @@ El proyecto consiste en la creación de un juego de mesa, el cual se basa en el 
 
 El juego ha sido desarrollado en C++ para ser ejecutado en la consola de comandos de cualquier sistema operativo. El juego se ejecuta en modo texto, y se ha implementado un sistema de menú para facilitar la interacción con el usuario.
 
+## Características
+Nuestro juego cuenta con las siguientes características:
+- Modo de juego para 2 jugadores.
+- Selección de tamaño de tablero en el menú de inicio.
+- Contador de puntos para cada jugador.
+- Sistema de menú para facilitar la interacción con el usuario.
+
+## Requisitos del sistema
+El juego ha sido desarrollado en C++ y se ha probado en los siguientes sistemas operativos:
+- Windows 10
+- Ubuntu 18.04
+- MacOS
+
+El juego es capaz de ejecutarse en cualquier sistema operativo que soporte C++. Sin embargo, hemos creado un archivo ejecutable para Windows 10, el cual se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego en Windows 10, solo es necesario descargar el archivo "got-ghnts.exe" y ejecutarlo.
+
+## Instrucciones de instalación
+Para instalar el juego, solo es necesario descargar el repositorio completo. El juego se encuentra en la carpeta "bin" del repositorio. Para ejecutar el juego, solo es necesario abrir la carpeta "bin" y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++.
+
+En caso de no poder usar un ejecutable, el juego se puede ejecutar en la consola de comandos de cualquier sistema operativo. Para ello, solo es necesario abrir la carpeta "src" del repositorio y ejecutar el archivo "got-ghnts.cpp" en un compilador de C++. El juego se ejecutará en la consola de comandos.
+
+## Licencia
+El proyecto se encuentra bajo la licencia MIT License. Para más información, ver el archivo [LICENSE](./LICENSE) en el repositorio.
+
+## Diagrama de clases
+
+
 ## Integrantes
 | Integrantes  | Correos |
 | ------------- | ------------- |
@@ -30,16 +56,8 @@ Una vez compilado el programa, se debe ejecutar el siguiente comando:
 
 `./main`
 
-## Requisitos del sistema
-El juego ha sido desarrollado en C++ y se ha probado en los siguientes sistemas operativos:
-- Windows 10
-- Ubuntu 18.04
-- MacOS Mojave
-
 ## Mejoras futuras
 - Implementar un sistema de guardado y carga de partidas en archivos binarios.
 - Implementar un sistema de ranking en archivos binarios.
 - Implementar un sistema de estadísticas en archivos binarios.
 
-## Licencia
-El proyecto se encuentra bajo la licencia MIT License. Para más información, ver el archivo LICENSE.
